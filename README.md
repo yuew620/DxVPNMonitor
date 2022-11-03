@@ -16,7 +16,9 @@ AWS云上，VPN与DX需要进行主备高可用的切换，需要实现一个脚
 
 1、chmod +777 monitor 目录下的脚本
 
-2、执行CronTabde挂载 10 8 * * 0 /bin/bash /home/ec2-user/monitor/HAcron.sh > /home/ec2-user/monitor/log/HAcron`date '+\%Y\%m\%d\%H\%M'`.log 2>&1 &
+2、执行CronTab的挂载
+crontab -e
+10 8 * * 0 /bin/bash /home/ec2-user/monitor/HAcron.sh > /home/ec2-user/monitor/log/HAcron`date '+\%Y\%m\%d\%H\%M'`.log 2>&1 &
 
 
 三、脚本配合执行逻辑说明
