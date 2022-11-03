@@ -8,7 +8,7 @@ AWS云上，VPN与DX需要进行主备高可用的切换，需要实现一个脚
 
 1、VPN和DX分别做两个点对点路由，需要预先选好云上云下两个IP地址，配置单条路由。
 
-2、一旦Ping不通，则通过修改TGW的Preference路由，进行路由切换。因此需要优先吧Prefix IP地址事先设置好，这个IP地址表示IDC机房的多个地址端
+2、一旦Ping不通，脚本会自动修改TGW的Preference路由，进行路由切换。因此需要优先吧Prefix IP地址事先设置好，这个IP地址表示IDC机房的多个地址端。脚本所在的节点需要有权限修改TGW路由，需要安装AWS CLI，配置好AKSK或者AWS credential profile
 
 二、部署脚本的过程
 
