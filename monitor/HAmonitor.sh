@@ -61,6 +61,9 @@ aws ec2 delete-transit-gateway-prefix-list-reference  \
 --prefix-list-id=$idcPrId
 }
 
+echo "default we use dx when this script begin， this is reset to default"
+connectionStatus=0
+switchTGWRouteTableToDx
 
 while :; do
 #dx monitoring
