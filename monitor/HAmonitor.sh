@@ -4,7 +4,7 @@
 
 echo `date` "-- Starting HA Monitor"
 #custom setting
-dxTargetIP=10.109.110.1
+dxTargetIP=127.0.0.1
 period=1
 failCount=10
 #Test Only DX direct， think VPN is always good
@@ -72,12 +72,12 @@ while :; do
 if ping -c 1 -t $pingTimeout $dxTargetIP &> /dev/null
 then
 echo "dx test success"
-if [$dxFailCount lt 2]
+if [ $dxFailCount -lt 2 ]
 then
 dxFailCount=0
 dxFail=0
 else
-dxFailCount = $[$dxFailCount-1]
+dxFailCount=$[$dxFailCount-1]
 fi
 else
 echo "dx ping test fail "
@@ -113,7 +113,7 @@ fi
 #vpnFail=1
 #fi
 
-echo "vpnFailCount=$vpnFailCount"
+echo "dxFail=$dxFail"
 
 echo "connectionStatus=$connectionStatus"
 
@@ -125,7 +125,7 @@ echo "dxFail = $dxFail"
 if [ $dxFail -eq 1 ]
 then
 echo "trigger switch from dx to vpn a"
-connectionStatus=1
+connectionStatus=0
 switchTGWRouteTableToVPN
 echo "trigger switch from dx to vpn b"
 fi
