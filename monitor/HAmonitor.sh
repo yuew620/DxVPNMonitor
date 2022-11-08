@@ -72,7 +72,7 @@ while :; do
 if ping -c 1 -t $pingTimeout $dxTargetIP &> /dev/null
 then
 echo "dx test success"
-if [dxFailCount < 2]
+if [$dxFailCount lt 2]
 then
 dxFailCount=0
 dxFail=0
