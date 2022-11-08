@@ -1,8 +1,8 @@
 #! /bin/sh
 
-#每周日的8点10分
+#每周一的8点10分
 # crontab -e
-# 10 8 * * 0 /bin/bash /home/ec2-user/monitor/HAcron.sh > /home/ec2-user/monitor/log/HAcron`date '+\%Y\%m\%d\%H\%M'`.log 2>&1 &
+# 10 8 * * 1 /bin/bash /home/ec2-user/monitor/HAcron.sh > /home/ec2-user/monitor/log/HAcron`date '+\%Y\%m\%d\%H\%M'`.log 2>&1 &
 # 查看任务
 # crontab -l
 # 涮出任务
