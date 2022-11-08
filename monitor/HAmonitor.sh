@@ -4,7 +4,7 @@
 
 echo `date` "-- Starting HA Monitor"
 #custom setting
-dxTargetIP=10.70.53.188
+dxTargetIP=10.109.110.1
 period=1
 failCount=10
 #Test Only DX direct， think VPN is always good
@@ -72,7 +72,7 @@ while :; do
 if ping -c 1 -t $pingTimeout $dxTargetIP &> /dev/null
 then
 echo "dx test success"
-if [dxdxFailCount < 2]
+if [dxFailCount < 2]
 then
 dxFailCount=0
 dxFail=0
