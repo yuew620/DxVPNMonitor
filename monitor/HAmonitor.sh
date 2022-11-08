@@ -25,9 +25,9 @@ vpnAttId=tgw-attach-0f21402e36c7c65ed
 
 #internal setting
 dxFail=0
-vpnFail=0
+#vpnFail=0
 dxFailCount=0
-vpnFailCount=0
+#vpnFailCount=0
 # ping time out 3 seconds
 pingTimeout=1
 
