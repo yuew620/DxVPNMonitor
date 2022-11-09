@@ -1,7 +1,7 @@
 #! /bin/sh
 
 #每周一的8点10分
-# crontab -e
+# crontab -e -u root
 # 10 8 * * 1 /bin/bash /home/ec2-user/monitor/HAcron.sh > /home/ec2-user/monitor/log/HAcron`date '+\%Y\%m\%d\%H\%M'`.log 2>&1 &
 # 查看任务
 # crontab -l
@@ -9,11 +9,14 @@
 # crontab -e 去掉之前添加的任务
 # 测试每1分钟，执行一次
 # */3 * * * * /bin/bash /home/ec2-user/monitor/HAcron.sh > /home/ec2-user/monitor/log/HAcron`date '+\%Y\%m\%d\%H\%M'`.log 2>&1 &
-#*/3 * * * * /bin/bash /home/ec2-user/monitor/HAcron.sh > /home/ec2-user/monitor/log/HAcronlog 2>&1 &
 #查看开启激动 crond
 #sudo ntsysv
 # crond重启
 #sudo service crond restart
+#/sbin/service crond status
+#要把cron设为在开机的时候自动启动，在 /etc/rc.d/rc.local 脚本中加入 /sbin/service crond start 即可要把cron设为在开机的时候自动启动，在 /etc/rc.d/rc.local 脚本中加入 /sbin/service crond start 即可
+#启动自动执行脚本 /bin/bash /home/ec2-user/monitor/HAcron.sh > /home/ec2-user/monitor/log/HAcron`date '+\%Y\%m\%d\%H\%M'`.log 2>&1 &
+#@reboot
 
 basePath=/home/ec2-user/monitor
 PRO_NAME=HAwatch.sh

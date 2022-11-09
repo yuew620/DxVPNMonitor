@@ -69,7 +69,7 @@ switchTGWRouteTableToDx
 
 while :; do
 #dx monitoring
-if ping -c 1 -t $pingTimeout $dxTargetIP &> /dev/null
+if ping -c 1 -w $pingTimeout $dxTargetIP &> /dev/null
 then
 echo "dx test success"
 if [ $dxFailCount -lt 2 ]
