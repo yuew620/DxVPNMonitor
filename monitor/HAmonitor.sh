@@ -5,6 +5,11 @@
 echo `date` "-- Starting HA Monitor"
 #custom setting
 dxTargetIP=127.0.0.1
+tgwRT=tgw-rtb-0d86bcd71877f6d88
+idcPrId=pl-0d81338f99b4770b6
+vpnAttId=tgw-attach-0f21402e36c7c65ed
+
+
 period=1
 failCount=10
 #Test Only DX direct， think VPN is always good
@@ -14,9 +19,7 @@ connectionStatus=0
 # 1 is vpn
 
 #modifty tgw route for switch
-tgwRT=tgw-rtb-0d86bcd71877f6d88
-idcPrId=pl-0d81338f99b4770b6
-vpnAttId=tgw-attach-0f21402e36c7c65ed
+
 
 # modify vpc route used by switchRouteTable function
 # no need to modify vpc route
@@ -50,7 +53,7 @@ pingTimeout=1
 
 switchTGWRouteTableToVPN(){
     echo "add vpn prefix preference in tgw route table "
-aws ec2 create-transit-gateway-prefix-list-reference  \
+/usr/bin/aws ec2 create-transit-gateway-prefix-list-reference  \
 --transit-gateway-route-table-id  $tgwRT \
 --prefix-list-id  $idcPrId \
 --transit-gateway-attachment-id $vpnAttId
@@ -58,7 +61,7 @@ aws ec2 create-transit-gateway-prefix-list-reference  \
 
 switchTGWRouteTableToDx(){
     echo "delete vpn prefix preference in tgw route table"
-aws ec2 delete-transit-gateway-prefix-list-reference  \
+/usr/bin/aws ec2 delete-transit-gateway-prefix-list-reference  \
 --transit-gateway-route-table-id $tgwRT \
 --prefix-list-id=$idcPrId
 }
