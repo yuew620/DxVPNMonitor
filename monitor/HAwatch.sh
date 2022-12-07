@@ -6,7 +6,7 @@ PRO_NAME=HAmonitor.sh
 basePath=/home/ec2-user/monitor
 chmod +x ${basePath}/HAmonitor.sh
 #find /home/ec2-user/monitor/log/ -mmin +120 -name "*.log" -exec rm -rf {} \;
-find ${basePath}/log/ -mtime +7 -name "*.log" -exec rm -rf {} \;
+find ${basePath}/log/ -mtime +4 -name "*.log" -exec rm -rf {} \;
 while true ; do
      #用ps获取$PRO_NAME进程数量
      NUM=`ps aux | grep -w ${PRO_NAME} | grep -v grep |wc -l`
